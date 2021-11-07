@@ -21,9 +21,8 @@ const char pass[] = "webgprs2002";
 //** MQTT CONFIGURATION ***
 //*************************
 
-const String serial_number = "123456789";
 
-const char *mqtt_server = "c-iot.ml"; //Domain name or IP
+const char *mqtt_server = ""; //Domain name or IP
 const uint16_t mqtt_port = 1883; //MQTT port TCP
 const char *mqtt_user = ""; //MQTT user
 const char *mqtt_pass = ""; //MQTT password
@@ -73,7 +72,7 @@ void loop() {
         msg_send.toCharArray(msg, 25);
 
         char topic[25];
-        String topic_aux = serial_number + "/temp";
+        String topic_aux ="";
         topic_aux.toCharArray(topic,25);
 
         mqtt.publish(topic, msg);
@@ -120,7 +119,7 @@ void reconnect(){
             Serial.println("Connected!");
 
             char topic[25];
-            String topic_aux = serial_number + "/temp";
+            String topic_aux = "";
             topic_aux.toCharArray(topic,25);
             mqtt.subscribe(topic);//subscribe to topic command
 
